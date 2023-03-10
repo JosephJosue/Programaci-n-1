@@ -1,12 +1,22 @@
-#Algoritmo que segun la cantidad de dinero a pagar aplica un descuento para el cliente
-cantArt = int(input("¿Cuantos articulos desea comprar?: "))
-if cantArt < 1:
-     print("¡ERROR, no puede comprar", cantArt, "articulos!")
-else:
-    lista = []
-    for i in range(cantArt * 2):
-        nomArt = input(f"Nombre del Articulo {i + 1}: ")
-        lista += [nomArt]
-        precArt = float(input(f"Precio del Articulo {i + 1}: "))
-        lista += [precArt]
-        print(f"La lista creada es: {lista}")
+#Algoritmo que hace funcion de carrito de compras el cual indica la cantidad a pagar
+def ImprimirArticulo(nomArt, precArt):
+    print("Producto: ", nomArt, "\nPrecio: ", precArt)
+lista = []
+nomArt = input("Nombre del Articulo: ")
+lista.append(nomArt)
+precArt = float(input("Precio del Articulo: "))
+total = precArt
+ImprimirArticulo(nomArt, precArt)
+decision = True
+while decision:
+    resp = input("¿Desea agregar mas articulos a su carrito? (Si - No)\n==>")
+    if resp == "Si":
+        nomArt = input("Nombre del Articulo: ")
+        lista.append(nomArt)
+        precArt = float(input("Precio del Articulo: "))
+        ImprimirArticulo(nomArt, precArt)
+        total += precArt
+    else:
+        decision = False
+print("Su carrito de compras tiene los siguientes articulos:\n==>", lista)
+print("Su total de compras es de:\n==>", total)
